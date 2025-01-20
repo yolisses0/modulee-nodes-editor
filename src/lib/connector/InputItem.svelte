@@ -9,4 +9,4 @@
 	const { input }: Props = $props();
 </script>
 
-<ConnectorItem connector={input} />
+<ConnectorItem connector={input} direction="left" />

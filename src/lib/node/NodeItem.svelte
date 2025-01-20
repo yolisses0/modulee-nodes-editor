@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ConnectionItem from '$lib/connection/ConnectionItem.svelte';
-	import ConnectorItem from '$lib/connector/ConnectorItem.svelte';
 	import InputItem from '$lib/connector/InputItem.svelte';
+	import OutputItem from '$lib/connector/OutputItem.svelte';
 	import type { Space } from '$lib/space/Space.js';
 	import { NodeItem as BaseNodeItem } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
@@ -25,7 +25,7 @@
 	>
 		<NodeItemHeader {node} {space} />
 		{#each node.outputs as output (output.id)}
-			<ConnectorItem connector={output} />
+			<OutputItem {output} />
 		{/each}
 		{#each node.inputs as input (input.id)}
 			<InputItem {input} />

@@ -5,13 +5,14 @@
 
 	interface Props {
 		connector: Connector;
+		direction: 'left' | 'right';
 	}
 
-	const { connector }: Props = $props();
+	const { connector, direction }: Props = $props();
 </script>
 
 <ConnectorArea {connector}>
-	<div class="flex flex-row items-center">
+	<div class="flex items-center {direction === 'left' ? 'flex-row' : 'flex-row-reverse'}">
 		<BaseConnectorItem {connector}>
 			<ConnectorJoint {connector} />
 		</BaseConnectorItem>
