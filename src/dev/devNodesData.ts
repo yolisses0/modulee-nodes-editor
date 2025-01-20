@@ -27,7 +27,7 @@ export const devNodesData: NodeData[] = [
 		outputs: [],
 		id: 'outputNode',
 		type: 'OutputNode',
-		position: { x: 2, y: 0 },
+		position: { x: 6, y: 8 },
 		inputs: [
 			{ id: 'outputNodeInput', name: 'input', connectedOutputId: 'constantNodeDefaultOutput' },
 		],

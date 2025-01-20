@@ -11,7 +11,7 @@ export function getPathD(screenStartPosition: Vector, screenEndPosition: Vector,
 		dataOffsetX *= 2;
 	}
 	dataOffsetX = Math.abs(dataOffsetX);
-	dataOffsetX = Math.min(dataOffsetX, 8);
+	dataOffsetX = Math.min(dataOffsetX, 6);
 
 	const dataPoint0 = new Vector(dataStartPosition.x + dataOffsetX, dataStartPosition.y);
 	const dataPoint1 = new Vector(dataEndPosition.x - dataOffsetX, dataEndPosition.y);
