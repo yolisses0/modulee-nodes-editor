@@ -6,6 +6,7 @@
 
 	interface Props {
 		node: Node;
+		space: Space;
 	}
 
 	const { node }: Props = $props();
