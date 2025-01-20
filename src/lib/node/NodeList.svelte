@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeList as BaseNodeList } from 'nodes-editor';
+	import { NodeList as BaseNodeList, PreviewConnectionWire } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
 	import { getScreenFontSize } from './getScreenFontSize.js';
 	import { getScreenLineHeight } from './getScreenLineHeight.js';
@@ -23,5 +23,6 @@
 		{#each nodes as node (node.id)}
 			<NodeItem {node} {space} />
 		{/each}
+		<PreviewConnectionWire />
 	</BaseNodeList>
 </div>

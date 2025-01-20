@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ConnectorItem as BaseConnectorItem } from 'nodes-editor';
+	import { ConnectorItem as BaseConnectorItem, ConnectorArea } from 'nodes-editor';
 	import type { Connector } from '../data/Connector.js';
 	import ConnectorJoint from './ConnectorJoint.svelte';
 
@@ -10,9 +10,11 @@
 	const { connector }: Props = $props();
 </script>
 
-<BaseConnectorItem {connector}>
+<ConnectorArea {connector}>
 	<div class="flex flex-row items-center">
-		<ConnectorJoint {connector} />
+		<BaseConnectorItem {connector}>
+			<ConnectorJoint {connector} />
+		</BaseConnectorItem>
 		{connector.name}
 	</div>
-</BaseConnectorItem>
+</ConnectorArea>
