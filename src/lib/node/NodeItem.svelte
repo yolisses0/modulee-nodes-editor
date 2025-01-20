@@ -1,8 +1,9 @@
 <script lang="ts">
+	import ConnectionItem from '$lib/connection/ConnectionItem.svelte';
+	import ConnectorItem from '$lib/connector/ConnectorItem.svelte';
 	import InputItem from '$lib/connector/InputItem.svelte';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeItem as BaseNodeItem, ConnectionItem } from 'nodes-editor';
-	import ConnectorItem from '../connector/ConnectorItem.svelte';
+	import { NodeItem as BaseNodeItem } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
 	import NodeItemHeader from './NodeItemHeader.svelte';
 
@@ -32,14 +33,8 @@
 	</div>
 </BaseNodeItem>
 
+<!-- This is here instead of in InputItem because inside BaseNodeItem there's
+the node position offset -->
 {#each node.inputs as input (input.id)}
-	{#if input.connectedOutputId}
-		<ConnectionItem
-			connection={{
-				id: input.id + 'connectedOutput',
-				startConnectorId: input.id,
-				endConnectorId: input.connectedOutputId
-			}}
-		/>
-	{/if}
+	<ConnectionItem {input} />
 {/each}
