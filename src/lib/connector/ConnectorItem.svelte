@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ConnectorItem as BaseConnectorItem, ConnectorArea } from 'nodes-editor';
+	import { ConnectorArea } from 'nodes-editor';
 	import type { Connector } from '../data/Connector.js';
 	import ConnectorJoint from './ConnectorJoint.svelte';
 
@@ -12,10 +12,8 @@
 </script>
 
 <ConnectorArea {connector}>
-	<div class="flex items-center {direction === 'left' ? 'flex-row' : 'flex-row-reverse'}">
-		<BaseConnectorItem {connector}>
-			<ConnectorJoint {connector} />
-		</BaseConnectorItem>
+	<div class="relative flex items-center {direction === 'left' ? 'flex-row' : 'flex-row-reverse'}">
+		<ConnectorJoint {connector} />
 		{connector.name}
 	</div>
 </ConnectorArea>
