@@ -12,7 +12,6 @@
 
 	function handleNodeMove({ node, mousePosition }: OnMoveCallbackParams) {
 		node.position = space.getDataPosition(mousePosition).round();
-		console.log(node.position);
 	}
 </script>
 

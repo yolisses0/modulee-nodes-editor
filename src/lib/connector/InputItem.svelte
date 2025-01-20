@@ -7,8 +7,6 @@
 	}
 
 	const { input }: Props = $props();
-
-	console.log(input);
 </script>
 
 <ConnectorItem connector={input} />
