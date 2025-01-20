@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Space } from '$lib/space/Space.js';
 	import { NodeItem as BaseNodeItem } from 'nodes-editor';
-	import ConnectorItem from '../ConnectorItem.svelte';
+	import ConnectorItem from '../connector/ConnectorItem.svelte';
 	import type { Node } from '../data/Node.svelte.js';
 	import NodeItemHeader from './NodeItemHeader.svelte';
 
