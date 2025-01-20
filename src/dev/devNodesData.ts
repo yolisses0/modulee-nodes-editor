@@ -8,10 +8,18 @@ import type { NodeData } from '$lib/data/NodeData.js';
 export const devNodesData: NodeData[] = [
 	{
 		inputs: [],
+		id: 'timeNode',
+		type: 'TimeNode',
+		extras: {},
+		position: { x: 0, y: 0 },
+		outputs: [{ name: 'output', id: 'timeNodeDefaultOutput' }]
+	},
+	{
+		inputs: [],
 		id: 'constantNode',
 		type: 'ConstantNode',
 		extras: { value: 42 },
-		position: { x: 0, y: 0 },
+		position: { x: 4, y: 4 },
 		outputs: [{ name: 'output', id: 'constantNodeDefaultOutput' }]
 	},
 	{
