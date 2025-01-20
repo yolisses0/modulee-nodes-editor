@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { NodeItem } from 'nodes-editor';
+	import { NodeItem as BaseNodeItem, NodeMover, type OnMoveCallbackParams } from 'nodes-editor';
 	import type { Node } from './data/Node.svelte.js';
 
 	interface Props {
@@ -7,8 +7,21 @@
 	}
 
 	const { node }: Props = $props();
+
+	function handleNodeMove({
+		node,
+		initialNodePosition,
+		initialMousePosition,
+		mousePosition
+	}: OnMoveCallbackParams) {
+		node.position = initialNodePosition.add(mousePosition.subtract(initialMousePosition));
+	}
 </script>
 
-<NodeItem {node}>
-	<div class="bg-zinc-800"></div>
-</NodeItem>
+<BaseNodeItem {node}>
+	<NodeMover {node} onMove={handleNodeMove}>
+		<div class="rounded bg-zinc-700">
+			{node.id}
+		</div>
+	</NodeMover>
+</BaseNodeItem>
