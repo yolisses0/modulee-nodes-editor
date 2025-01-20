@@ -1,7 +1,7 @@
 <script lang="ts">
 	import InputItem from '$lib/connector/InputItem.svelte';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeItem as BaseNodeItem } from 'nodes-editor';
+	import { NodeItem as BaseNodeItem, ConnectionItem } from 'nodes-editor';
 	import ConnectorItem from '../connector/ConnectorItem.svelte';
 	import type { Node } from '../data/Node.svelte.js';
 	import NodeItemHeader from './NodeItemHeader.svelte';
@@ -31,3 +31,15 @@
 		{/each}
 	</div>
 </BaseNodeItem>
+
+{#each node.inputs as input (input.id)}
+	{#if input.connectedOutputId}
+		<ConnectionItem
+			connection={{
+				id: input.id + 'connectedOutput',
+				startConnectorId: input.id,
+				endConnectorId: input.connectedOutputId
+			}}
+		/>
+	{/if}
+{/each}
