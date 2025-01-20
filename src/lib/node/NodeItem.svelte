@@ -11,10 +11,16 @@
 	}
 
 	const { node, space }: Props = $props();
+
+	const screenPosition = $derived(space.getScreenPosition(node.position));
 </script>
 
-<BaseNodeItem {node}>
-	<div class="rounded bg-zinc-700" style:outline-width="0.1lh" style:border-radius="0.4lh">
+<BaseNodeItem position={screenPosition}>
+	<div
+		style:outline-width="0.1lh"
+		style:border-radius="0.4lh"
+		class="break-words bg-zinc-600 outline outline-zinc-700"
+	>
 		<NodeItemHeader {node} {space} />
 		{#each node.outputs as output (output.id)}
 			<ConnectorItem connector={output} />

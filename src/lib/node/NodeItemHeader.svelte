@@ -11,13 +11,13 @@
 	const { node, space }: Props = $props();
 
 	function handleNodeMove({ node, mousePosition }: OnMoveCallbackParams) {
-		node.position = space.getDataPosition(mousePosition);
+		node.position = space.getDataPosition(mousePosition).round();
 		console.log(node.position);
 	}
 </script>
 
-<div class="hover-bg w-full">
-	<BaseNodeMover {node} onMove={handleNodeMove}>
+<BaseNodeMover {node} onMove={handleNodeMove}>
+	<div class="hover-bg" style:padding-inline="0.5lh">
 		{node.id}
-	</BaseNodeMover>
-</div>
+	</div>
+</BaseNodeMover>
