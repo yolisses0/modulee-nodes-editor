@@ -36,5 +36,5 @@
 <!-- This is here instead of in InputItem because inside BaseNodeItem there's
 the node position offset -->
 {#each node.inputs as input (input.id)}
-	<ConnectionItem {input} />
+	<ConnectionItem {input} {space} />
 {/each}

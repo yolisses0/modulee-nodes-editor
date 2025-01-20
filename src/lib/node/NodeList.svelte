@@ -24,6 +24,6 @@
 		{#each nodes as node (node.id)}
 			<NodeItem {node} {space} />
 		{/each}
-		<PreviewConnectionWire />
+		<PreviewConnectionWire {space} />
 	</BaseNodeList>
 </div>

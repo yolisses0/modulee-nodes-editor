@@ -1,7 +1,8 @@
+import type { Space } from '$lib/space/Space.js';
 import { Vector } from '$lib/space/Vector.js';
 import { getVectorsString, getVectorString } from 'nodes-editor';
 
-export function getPathD(startPosition: Vector, endPosition: Vector) {
+export function getPathD(startPosition: Vector, endPosition: Vector, space: Space) {
 	let offsetX = (endPosition.x - startPosition.x) / 2;
 	offsetX = Math.abs(offsetX);
 

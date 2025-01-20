@@ -4,9 +4,9 @@
 	import WirePath from './WirePath.svelte';
 	import type { WireProps } from './WireProps.js';
 
-	const { endPosition, startPosition }: WireProps = $props();
+	const { endPosition, startPosition, space }: WireProps = $props();
 </script>
 
 <WireSvg {startPosition} {endPosition} margin={new Vector(10, 10)}>
-	<WirePath {startPosition} {endPosition} />
+	<WirePath {startPosition} {endPosition} {space} />
 </WireSvg>

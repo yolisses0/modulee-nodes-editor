@@ -1,14 +1,15 @@
 <script lang="ts">
 	import type { Input } from '$lib/data/Input.svelte.js';
-	import { ConnectionItem } from 'nodes-editor';
+	import type { Space } from '$lib/space/Space.js';
+	import { ConnectionItem, Vector } from 'nodes-editor';
 	import Wire from './Wire.svelte';
-	import type { WireProps } from './WireProps.js';
 
 	interface Props {
 		input: Input;
+		space: Space;
 	}
 
-	const { input }: Props = $props();
+	const { input, space }: Props = $props();
 </script>
 
 {#if input.connectedOutputId}
@@ -16,11 +17,17 @@
 		connection={{
 			endConnectorId: input.id,
 			id: input.id + 'connectedOutput',
-			startConnectorId: input.connectedOutputId
+			startConnectorId: input.connectedOutputId,
 		}}
 	>
-		{#snippet children({ startPosition, endPosition }: WireProps)}
-			<Wire {startPosition} {endPosition} />
+		{#snippet children({
+			endPosition,
+			startPosition,
+		}: {
+			endPosition: Vector;
+			startPosition: Vector;
+		})}
+			<Wire {startPosition} {endPosition} {space} />
 		{/snippet}
 	</ConnectionItem>
 {/if}
