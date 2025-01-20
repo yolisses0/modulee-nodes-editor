@@ -1,27 +1,24 @@
 <script lang="ts">
-	import { NodeItem as BaseNodeItem, NodeMover, type OnMoveCallbackParams } from 'nodes-editor';
+	import { NodeItem as BaseNodeItem } from 'nodes-editor';
+	import ConnectorItem from './ConnectorItem.svelte';
 	import type { Node } from './data/Node.svelte.js';
+	import NodeItemHeader from './NodeItemHeader.svelte';
 
 	interface Props {
 		node: Node;
 	}
 
 	const { node }: Props = $props();
-
-	function handleNodeMove({
-		node,
-		initialNodePosition,
-		initialMousePosition,
-		mousePosition
-	}: OnMoveCallbackParams) {
-		node.position = initialNodePosition.add(mousePosition.subtract(initialMousePosition));
-	}
 </script>
 
 <BaseNodeItem {node}>
-	<NodeMover {node} onMove={handleNodeMove}>
-		<div class="rounded bg-zinc-700">
-			{node.id}
-		</div>
-	</NodeMover>
+	<div class="rounded bg-zinc-700">
+		<NodeItemHeader {node} />
+		{#each node.outputs as output (output.id)}
+			<ConnectorItem connector={output} />
+		{/each}
+		{#each node.inputs as input (input.id)}
+			<ConnectorItem connector={input} />
+		{/each}
+	</div>
 </BaseNodeItem>

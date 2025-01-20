@@ -8,3 +8,7 @@
     background-position: 0.5lh 0.5lh;
     background-image: radial-gradient(circle, #8888 0.05lh, rgba(0, 0, 0, 0) 0.05lh);
 }
+
+.hover-bg {
+	@apply hover:bg-white/10;
+}

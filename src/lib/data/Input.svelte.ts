@@ -1,9 +1,9 @@
+import type { Connector } from './Connector.js';
 import type { InputData } from './InputData.js';
 import type { Node } from './Node.svelte.js';
 import type { Output } from './Output.svelte.js';
 
-// implements Connector
-export class Input {
+export class Input implements Connector {
 	id: string;
 	name: string;
 	connectedOutput?: Output;
