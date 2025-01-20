@@ -2,14 +2,27 @@ import type { Space } from '$lib/space/Space.js';
 import { Vector } from '$lib/space/Vector.js';
 import { getVectorsString, getVectorString } from 'nodes-editor';
 
-export function getPathD(startPosition: Vector, endPosition: Vector, space: Space) {
-	let offsetX = (endPosition.x - startPosition.x) / 2;
-	offsetX = Math.abs(offsetX);
+export function getPathD(screenStartPosition: Vector, screenEndPosition: Vector, space: Space) {
+	const dataStartPosition = space.getDataPosition(screenStartPosition);
+	const dataEndPosition = space.getDataPosition(screenEndPosition);
 
-	const point0 = new Vector(startPosition.x + offsetX, startPosition.y);
-	const point1 = new Vector(endPosition.x - offsetX, endPosition.y);
+	let dataOffsetX = (dataEndPosition.x - dataStartPosition.x) / 2;
+	if (dataOffsetX < 0) {
+		dataOffsetX *= 4;
+	}
+	dataOffsetX = Math.abs(dataOffsetX);
+	dataOffsetX = Math.min(dataOffsetX, 10);
+
+	const dataPoint0 = new Vector(dataStartPosition.x + dataOffsetX, dataStartPosition.y);
+	const dataPoint1 = new Vector(dataEndPosition.x - dataOffsetX, dataEndPosition.y);
+
+	const screenPoint0 = space.getScreenPosition(dataPoint0);
+	const screenPoint1 = space.getScreenPosition(dataPoint1);
 
 	return (
-		'M' + getVectorString(startPosition) + 'C' + getVectorsString([point0, point1, endPosition])
+		'M' +
+		getVectorString(screenStartPosition) +
+		'C' +
+		getVectorsString([screenPoint0, screenPoint1, screenEndPosition])
 	);
 }

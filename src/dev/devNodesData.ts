@@ -12,24 +12,24 @@ export const devNodesData: NodeData[] = [
 		type: 'TimeNode',
 		extras: {},
 		position: { x: 0, y: 0 },
-		outputs: [{ name: 'output', id: 'timeNodeDefaultOutput' }]
+		outputs: [{ name: 'output', id: 'timeNodeDefaultOutput' }],
 	},
 	{
 		inputs: [],
 		id: 'constantNode',
 		type: 'ConstantNode',
 		extras: { value: 42 },
-		position: { x: 4, y: 4 },
-		outputs: [{ name: 'output', id: 'constantNodeDefaultOutput' }]
+		position: { x: 14, y: 4 },
+		outputs: [{ name: 'output', id: 'constantNodeDefaultOutput' }],
 	},
 	{
 		extras: {},
 		outputs: [],
 		id: 'outputNode',
 		type: 'OutputNode',
-		position: { x: 8, y: 0 },
+		position: { x: 2, y: 0 },
 		inputs: [
-			{ id: 'outputNodeInput', name: 'input', connectedOutputId: 'constantNodeDefaultOutput' }
-		]
-	}
+			{ id: 'outputNodeInput', name: 'input', connectedOutputId: 'constantNodeDefaultOutput' },
+		],
+	},
 ];
