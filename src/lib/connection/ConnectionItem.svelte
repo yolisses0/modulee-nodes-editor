@@ -14,9 +14,9 @@
 {#if input.connectedOutputId}
 	<ConnectionItem
 		connection={{
-			startConnectorId: input.id,
+			endConnectorId: input.id,
 			id: input.id + 'connectedOutput',
-			endConnectorId: input.connectedOutputId
+			startConnectorId: input.connectedOutputId
 		}}
 	>
 		{#snippet children({ startPosition, endPosition }: WireProps)}
