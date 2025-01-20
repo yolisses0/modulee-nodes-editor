@@ -8,4 +8,4 @@
 </script>
 
 <path d={pathD} stroke="#14532d" fill="transparent" stroke-width="0.25lh" />
-<path d={pathD} stroke="#22c55e" fill="transparent" stroke-width="0.15lh" stroke-linecap="round" />
+<path d={pathD} stroke="#22c55e" fill="transparent" stroke-width="0.15lh" stroke-linecap="square" />
