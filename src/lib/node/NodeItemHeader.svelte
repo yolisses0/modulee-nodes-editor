@@ -3,7 +3,7 @@
 	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeMover as BaseNodeMover, type OnMoveCallbackParams } from 'nodes-editor';
+	import { NodeMover as BaseNodeMover, type MoveNodeEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
 
 	interface Props {
@@ -14,23 +14,19 @@
 
 	const { node, space, editor }: Props = $props();
 
-	function getMoveDataPosition({
-		position,
-		initialPosition,
-		initialNodePosition,
-	}: OnMoveCallbackParams) {
+	function getMoveDataPosition({ position, initialPosition, initialNodePosition }: MoveNodeEvent) {
 		const screenInitialNodePosition = space.getScreenPosition(initialNodePosition);
 		const screenPosition = position.add(screenInitialNodePosition).subtract(initialPosition);
 		return space.getDataPosition(screenPosition).round();
 	}
 
-	function handleMove(params: OnMoveCallbackParams) {
-		const dataPosition = getMoveDataPosition(params);
+	function handleMove(e: MoveNodeEvent) {
+		const dataPosition = getMoveDataPosition(e);
 		node.position = dataPosition;
 	}
 
-	function handleEndMove(params: OnMoveCallbackParams) {
-		const dataPosition = getMoveDataPosition(params);
+	function handleEndMove(e: MoveNodeEvent) {
+		const dataPosition = getMoveDataPosition(e);
 		node.position = dataPosition;
 
 		const moveNodeCommand = new MoveNodeCommand({

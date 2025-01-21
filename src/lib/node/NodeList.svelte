@@ -15,6 +15,8 @@
 	}
 
 	const { nodes, space, editor }: Props = $props();
+
+	function handleEndPreview() {}
 </script>
 
 <div
