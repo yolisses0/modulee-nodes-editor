@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { SetInputConnectedOutput } from '$lib/commands/SetInputConnectedOutput.js';
 	import PreviewConnectionWire from '$lib/connection/PreviewConnectionWire.svelte';
+	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeList as BaseNodeList } from 'nodes-editor';
+	import { NodeList as BaseNodeList, type EndPreviewConnectionEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
+	import { getInputAndOutput } from './getInputAndOutput.js';
 	import { getScreenFontSize } from './getScreenFontSize.js';
 	import { getScreenLineHeight } from './getScreenLineHeight.js';
 	import NodeItem from './NodeItem.svelte';
@@ -16,7 +19,15 @@
 
 	const { nodes, space, editor }: Props = $props();
 
-	function handleEndPreview() {}
+	function handleEndPreviewConnection(e: EndPreviewConnectionEvent) {
+		const { input, output } = getInputAndOutput(e);
+		const command = new SetInputConnectedOutput({
+			id: createId(),
+			type: 'SetInputConnectedOutput',
+			details: { inputId: input.id, outputId: output?.id },
+		});
+		editor.execute(command);
+	}
 </script>
 
 <div
@@ -24,7 +35,7 @@
 	style:font-size={getScreenFontSize(space) + 'px'}
 	style:line-height={getScreenLineHeight(space) + 'px'}
 >
-	<BaseNodeList>
+	<BaseNodeList onEndPreview={handleEndPreviewConnection}>
 		{#each nodes as node (node.id)}
 			<NodeItem {node} {space} {editor} />
 		{/each}
