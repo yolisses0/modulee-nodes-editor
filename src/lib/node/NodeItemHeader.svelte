@@ -59,6 +59,6 @@
 	oncontextmenu={handleContextMenu}
 >
 	<div class="hover-bg select-none" style:padding-inline="0.5lh">
-		{node.id}
+		{node.type}
 	</div>
 </BaseNodeMover>
