@@ -1,5 +1,5 @@
-import { commandClassesByType } from './commandClassesByType';
-import type { CommandData } from './CommandData';
+import { commandClassesByType } from './commandClassesByType.js';
+import type { CommandData } from './CommandData.js';
 
 export function instantiateCommand(commandData: CommandData) {
 	const constructor = commandClassesByType[commandData.type];

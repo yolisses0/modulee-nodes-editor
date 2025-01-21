@@ -1,7 +1,7 @@
-import type { EditorData } from '$lib/editor/EditorData';
-import { expect, test } from 'vitest';
-import { RemoveNodeCommand } from './RemoveNodeCommand';
-import { mockCommandData } from './test/mockNodeData';
+import type { EditorData } from '$lib/editor/EditorData.js';
+import { test, expect } from 'vitest';
+import { RemoveNodeCommand } from './RemoveNodeCommand.js';
+import { mockCommandData } from './test/mockNodeData.js';
 
 test('RemoveNodeCommand', () => {
 	const editorData = { nodes: [{ id: '1' }, { id: '2' }, { id: '3' }] } as EditorData;

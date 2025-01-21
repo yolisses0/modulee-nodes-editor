@@ -1,9 +1,6 @@
-import { reinsert } from '$lib/array/reinsert';
-import type { Remotion } from '$lib/array/remotion';
-import { removeById } from '$lib/array/removeById';
-import { Command } from '$lib/editor/Command';
-import type { EditorData } from '$lib/editor/EditorData';
-import type { NodeData } from '../NodeData';
+import type { NodeData } from '$lib/data/NodeData.js';
+import { Command } from '$lib/editor/Command.js';
+import type { EditorData } from '$lib/editor/EditorData.js';
 
 export class RemoveNodeCommand extends Command<{
 	nodeId: string;

@@ -1,4 +1,4 @@
-import type { NodeData } from '$lib/node/NodeData';
+import type { NodeData } from '$lib/data/NodeData.js';
 
 export function findInputDataInNodesData(inputId: string, nodesData: NodeData[]) {
 	for (const nodeData of nodesData) {

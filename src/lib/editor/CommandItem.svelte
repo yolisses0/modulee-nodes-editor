@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Command } from './Command';
+	import type { Command } from './Command.js';
 
 	interface Props {
 		command: Command;

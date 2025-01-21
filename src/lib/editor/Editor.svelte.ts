@@ -1,6 +1,6 @@
-import { Node } from '$lib/node/Node.svelte';
-import type { Command } from './Command';
-import type { EditorData } from './EditorData';
+import { Node } from '$lib/data/Node.svelte.js';
+import type { Command } from './Command.js';
+import type { EditorData } from './EditorData.js';
 
 export class Editor {
 	nodes: Node[] = $state([]);

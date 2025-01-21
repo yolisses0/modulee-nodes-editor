@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Command } from './Command';
+	import type { Command } from './Command.js';
 	import CommandItem from './CommandItem.svelte';
 
 	interface Props {

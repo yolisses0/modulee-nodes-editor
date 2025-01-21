@@ -1,6 +1,6 @@
-import type { NodeData } from '$lib/node/NodeData';
+import type { NodeData } from '$lib/data/NodeData.js';
 import { expect, test } from 'vitest';
-import { findInputDataInNodesData } from './findInputDataInNodesData';
+import { findInputDataInNodesData } from './findInputDataInNodesData.js';
 
 test('findInputDataInNodesData', () => {
 	const nodesData = [

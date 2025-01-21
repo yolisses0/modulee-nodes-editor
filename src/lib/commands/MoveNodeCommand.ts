@@ -1,7 +1,6 @@
-import { findById } from '$lib/array/findById';
-import { Command } from '$lib/editor/Command';
-import type { EditorData } from '$lib/editor/EditorData';
-import type { VectorData } from '$lib/space/VectorData';
+import type { VectorData } from '$lib/data/VectorData.js';
+import { Command } from '$lib/editor/Command.js';
+import type { EditorData } from '$lib/editor/EditorData.js';
 
 export class MoveNodeCommand extends Command<{
 	nodeId: string;

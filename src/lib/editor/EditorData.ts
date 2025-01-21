@@ -1,4 +1,4 @@
-import type { NodeData } from '$lib/node/NodeData';
+import type { NodeData } from '$lib/data/NodeData.js';
 
 export type EditorData = {
 	nodes: NodeData[];

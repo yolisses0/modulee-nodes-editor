@@ -1,7 +1,7 @@
-import { AddNodeCommand } from '$lib/node/commands/AddNodeCommand';
-import { MoveNodeCommand } from '$lib/node/commands/MoveNodeCommand';
-import { RemoveNodeCommand } from '$lib/node/commands/RemoveNodeCommand';
-import type { CommandClass } from './CommandClass';
+import { AddNodeCommand } from '$lib/commands/AddNodeCommand.js';
+import { MoveNodeCommand } from '$lib/commands/MoveNodeCommand.js';
+import { RemoveNodeCommand } from '$lib/commands/RemoveNodeCommand.js';
+import type { CommandClass } from './CommandClass.js';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const commandClasses: CommandClass<any>[] = [
