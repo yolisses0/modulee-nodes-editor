@@ -10,7 +10,6 @@
 	import ZoomInButton from '$lib/zoom/ZoomInButton.svelte';
 	import ZoomOutButton from '$lib/zoom/ZoomOutButton.svelte';
 	import { devEditorData } from './devEditorData.js';
-	import { devNodes } from './devNodes.js';
 
 	let zoom = $state(20);
 
@@ -29,5 +28,5 @@
 	<!-- <DevButton {editor} /> -->
 </div>
 <div class="flex min-h-screen flex-col">
-	<NodeList nodes={devNodes} {space} />
+	<NodeList {editor} {space} nodes={editor.nodes} />
 </div>

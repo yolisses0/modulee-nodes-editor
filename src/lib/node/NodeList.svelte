@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PreviewConnectionWire from '$lib/connection/PreviewConnectionWire.svelte';
+	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
 	import { NodeList as BaseNodeList } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
@@ -10,9 +11,10 @@
 	interface Props {
 		space: Space;
 		nodes: Node[];
+		editor: Editor;
 	}
 
-	const { nodes, space }: Props = $props();
+	const { nodes, space, editor }: Props = $props();
 </script>
 
 <div
@@ -22,7 +24,7 @@
 >
 	<BaseNodeList>
 		{#each nodes as node (node.id)}
-			<NodeItem {node} {space} />
+			<NodeItem {node} {space} {editor} />
 		{/each}
 		<PreviewConnectionWire {space} />
 	</BaseNodeList>
