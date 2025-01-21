@@ -1,3 +1,4 @@
+import { findById } from '$lib/array/findById.js';
 import type { VectorData } from '$lib/data/VectorData.js';
 import { Command } from '$lib/editor/Command.js';
 import type { EditorData } from '$lib/editor/EditorData.js';
