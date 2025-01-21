@@ -2,6 +2,7 @@
 	import { ConnectorArea } from 'nodes-editor';
 	import type { Connector } from '../data/Connector.js';
 	import ConnectorJoint from './ConnectorJoint.svelte';
+	import { endConnectorCondition } from './endConnectorCondition.js';
 
 	interface Props {
 		connector: Connector;
@@ -11,7 +12,7 @@
 	const { connector, direction }: Props = $props();
 </script>
 
-<ConnectorArea {connector}>
+<ConnectorArea {connector} {endConnectorCondition}>
 	<div class="relative flex items-center {direction === 'left' ? 'flex-row' : 'flex-row-reverse'}">
 		<ConnectorJoint {connector} />
 		{connector.name}
