@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { Editor } from '$lib/editor/Editor.svelte.js';
+	import RedoButton from '$lib/editor/RedoButton.svelte';
+	import UndoButton from '$lib/editor/UndoButton.svelte';
 	import NodeList from '$lib/node/NodeList.svelte';
 	import { OffsetConverter } from '$lib/space/OffsetConverter.js';
 	import { Space } from '$lib/space/Space.js';
@@ -6,9 +9,12 @@
 	import { ZoomConverter } from '$lib/space/ZoomConverter.js';
 	import ZoomInButton from '$lib/zoom/ZoomInButton.svelte';
 	import ZoomOutButton from '$lib/zoom/ZoomOutButton.svelte';
+	import { devEditorData } from './devEditorData.js';
 	import { devNodes } from './devNodes.js';
 
 	let zoom = $state(20);
+
+	const editor = new Editor(devEditorData);
 
 	const space = $derived(
 		new Space([new OffsetConverter(new Vector(3, 2)), new ZoomConverter(zoom)]),
@@ -16,8 +22,8 @@
 </script>
 
 <div class="flex-row border-b border-b-white/10">
-	<!-- <UndoButton {editor} /> -->
-	<!-- <RedoButton {editor} /> -->
+	<UndoButton {editor} />
+	<RedoButton {editor} />
 	<ZoomInButton bind:zoom />
 	<ZoomOutButton bind:zoom />
 	<!-- <DevButton {editor} /> -->

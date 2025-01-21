@@ -27,3 +27,11 @@
 		<PreviewConnectionWire {space} />
 	</BaseNodeList>
 </div>
+
+<style lang="postcss">
+	:global(.node-list) {
+		background-size: 1lh 1lh;
+		background-position: 0.5lh 0.5lh;
+		background-image: radial-gradient(circle, #8888 0.05lh, rgba(0, 0, 0, 0) 0.05lh);
+	}
+</style>

@@ -2,17 +2,53 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+body,
+html {
+	@apply h-full overflow-hidden;
+}
+
 html {
 	@apply bg-white text-black dark:bg-zinc-900 dark:text-white;
 }
 
-.node-list {
-    background-size: 1lh 1lh;
-    background-position: 0.5lh 0.5lh;
-    background-image: radial-gradient(circle, #8888 0.05lh, rgba(0, 0, 0, 0) 0.05lh);
+button:disabled {
+	@apply opacity-50;
+}
+
+div {
+	@apply flex flex-col;
+}
+
+button {
+	@apply flex flex-row items-center;
 }
 
 .hover-bg {
 	@apply hover:bg-white/10;
 }
 
+.common-button {
+	@apply hover-bg rounded p-2;
+}
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #27272b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #4e4e52;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #6e6e71;
+}
