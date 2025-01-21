@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { MoveNodeCommand } from '$lib/commands/MoveNodeCommand.js';
+	import { RemoveNodeCommand } from '$lib/commands/RemoveNodeCommand.js';
 	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
@@ -36,9 +37,27 @@
 		});
 		editor.execute(moveNodeCommand);
 	}
+
+	function handleContextMenu(e: MouseEvent) {
+		e.preventDefault();
+
+		const removeNodeCommand = new RemoveNodeCommand({
+			type: 'RemoveNodeCommand',
+			id: createId(),
+			details: { nodeId: node.id },
+		});
+		editor.execute(removeNodeCommand);
+
+		return '';
+	}
 </script>
 
-<BaseNodeMover {node} onMove={handleMove} onEndMove={handleEndMove}>
+<BaseNodeMover
+	{node}
+	onMove={handleMove}
+	onEndMove={handleEndMove}
+	oncontextmenu={handleContextMenu}
+>
 	<div class="hover-bg select-none" style:padding-inline="0.5lh">
 		{node.id}
 	</div>
