@@ -6,6 +6,7 @@
 	import type { Space } from '$lib/space/Space.js';
 	import { NodeList as BaseNodeList, type EndPreviewConnectionEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
+	import AddNodeMenuWrapper from './AddNodeMenuWrapper.svelte';
 	import { getInputAndOutput } from './getInputAndOutput.js';
 	import { getScreenFontSize } from './getScreenFontSize.js';
 	import { getScreenLineHeight } from './getScreenLineHeight.js';
@@ -17,6 +18,7 @@
 		editor: Editor;
 	}
 
+	let mouseEvent = $state<MouseEvent>();
 	const { nodes, space, editor }: Props = $props();
 
 	function handleEndPreviewConnection(e: EndPreviewConnectionEvent) {
@@ -28,6 +30,11 @@
 		});
 		editor.execute(command);
 	}
+
+	function handleContextMenu(e: MouseEvent) {
+		e.preventDefault();
+		mouseEvent = e;
+	}
 </script>
 
 <div
@@ -35,11 +42,12 @@
 	style:font-size={getScreenFontSize(space) + 'px'}
 	style:line-height={getScreenLineHeight(space) + 'px'}
 >
-	<BaseNodeList onEndPreview={handleEndPreviewConnection}>
+	<BaseNodeList oncontextmenu={handleContextMenu} onEndPreview={handleEndPreviewConnection}>
 		{#each nodes as node (node.id)}
 			<NodeItem {node} {space} {editor} />
 		{/each}
 		<PreviewConnectionWire {space} />
+		<AddNodeMenuWrapper {mouseEvent} />
 	</BaseNodeList>
 </div>
 
