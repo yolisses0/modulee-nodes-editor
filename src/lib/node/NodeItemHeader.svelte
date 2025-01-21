@@ -10,8 +10,16 @@
 
 	const { node, space }: Props = $props();
 
-	function handleNodeMove({ node, mousePosition }: OnMoveCallbackParams) {
-		node.position = space.getDataPosition(mousePosition).round();
+	function handleNodeMove({
+		node,
+		position,
+		initialPosition,
+		initialNodePosition,
+	}: OnMoveCallbackParams) {
+		const screenInitialNodePosition = space.getScreenPosition(initialNodePosition);
+		const screenPosition = position.add(screenInitialNodePosition).subtract(initialPosition);
+		const dataPosition = space.getDataPosition(screenPosition).round();
+		node.position = dataPosition;
 	}
 </script>
 

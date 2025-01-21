@@ -8,8 +8,6 @@
 	// Found empirically with the WirePath curve
 	const dataMargin = new Vector(3, 1);
 	const screenMargin = space.getScreenSize(dataMargin);
-
-	console.log(screenMargin);
 </script>
 
 <WireSvg {startPosition} {endPosition} margin={screenMargin}>
