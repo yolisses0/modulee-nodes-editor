@@ -61,7 +61,7 @@
 	onStartMove={handleStartMove}
 	oncontextmenu={handleContextMenu}
 >
-	<div class="hover-bg select-none" style:padding-inline="0.5lh">
+	<div class="hover-bg" style:padding-inline="0.5lh">
 		{node.type}
 	</div>
 </Mover>

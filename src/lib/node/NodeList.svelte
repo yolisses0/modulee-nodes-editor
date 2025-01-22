@@ -39,7 +39,7 @@
 </script>
 
 <div
-	class="flex flex-1 flex-col"
+	class="flex flex-1 select-none flex-col"
 	style:font-size={getScreenFontSize(space) + 'px'}
 	style:line-height={getScreenLineHeight(space) + 'px'}
 >
