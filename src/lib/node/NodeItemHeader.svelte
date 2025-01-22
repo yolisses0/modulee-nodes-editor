@@ -21,7 +21,7 @@
 		const screenNodePosition = mouseRelativePosition
 			.add(screenInitialNodePosition)
 			.subtract(initialMouseRelativePosition);
-		return space.getDataPosition(screenNodePosition).round();
+		return space.getDataPosition(screenNodePosition).floor();
 	}
 
 	function handleStartMove(e: MoveEvent) {

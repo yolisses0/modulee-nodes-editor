@@ -5,10 +5,10 @@
 	import NodeList from '$lib/node/NodeList.svelte';
 	import { OffsetConverter } from '$lib/space/OffsetConverter.js';
 	import { Space } from '$lib/space/Space.js';
-	import { Vector } from '$lib/space/Vector.js';
 	import { ZoomConverter } from '$lib/space/ZoomConverter.js';
 	import ZoomInButton from '$lib/zoom/ZoomInButton.svelte';
 	import ZoomOutButton from '$lib/zoom/ZoomOutButton.svelte';
+	import { Vector } from 'nodes-editor';
 	import { devEditorData } from './devEditorData.js';
 
 	let zoom = $state(20);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Vector } from '$lib/space/Vector.js';
+	import type { Vector } from 'nodes-editor';
 
 	interface Props {
 		screenPosition: Vector;

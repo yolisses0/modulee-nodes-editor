@@ -1,6 +1,5 @@
 import type { Space } from '$lib/space/Space.js';
-import { Vector } from '$lib/space/Vector.js';
-import { getVectorsString, getVectorString } from 'nodes-editor';
+import { getVectorsString, getVectorString, Vector } from 'nodes-editor';
 
 export function getPathD(screenStartPosition: Vector, screenEndPosition: Vector, space: Space) {
 	const dataStartPosition = space.getDataPosition(screenStartPosition);

@@ -1,5 +1,5 @@
+import { Vector } from 'nodes-editor';
 import type { Converter } from './Converter.js';
-import type { Vector } from './Vector.js';
 
 export class RoundConverter implements Converter {
 	getScreenPosition(dataPosition: Vector): Vector {
