@@ -1,12 +1,16 @@
 <script lang="ts">
+	import type { Editor } from '$lib/editor/Editor.svelte.js';
+	import type { Space } from '$lib/space/Space.js';
 	import { getMouseRelativePosition, getNodeListContext } from 'nodes-editor';
 	import AddNodeMenu from './AddNodeMenu.svelte';
 
 	interface Props {
+		space: Space;
+		editor: Editor;
 		mouseEvent?: MouseEvent;
 	}
 
-	let { mouseEvent = $bindable() }: Props = $props();
+	let { space, editor, mouseEvent = $bindable() }: Props = $props();
 	const nodeListContext = getNodeListContext();
 	const menuPosition = $derived.by(() => {
 		if (!mouseEvent) return;
@@ -14,12 +18,12 @@
 		return getMouseRelativePosition(mouseEvent, nodeListContext.nodeList);
 	});
 
-	function handleOverlayClick() {
+	function closeModal() {
 		mouseEvent = undefined;
 	}
 </script>
 
 {#if menuPosition}
-	<button onclick={handleOverlayClick} class="absolute h-full w-full" aria-label="overlay"></button>
-	<AddNodeMenu screenPosition={menuPosition}></AddNodeMenu>
+	<button onclick={closeModal} class="absolute h-full w-full" aria-label="overlay"></button>
+	<AddNodeMenu screenPosition={menuPosition} {space} {editor} {closeModal}></AddNodeMenu>
 {/if}

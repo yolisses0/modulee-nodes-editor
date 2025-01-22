@@ -6,7 +6,7 @@
 	import type { Space } from '$lib/space/Space.js';
 	import { NodeList as BaseNodeList, type EndPreviewConnectionEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
-	import AddNodeMenuWrapper from './AddNodeMenuWrapper.svelte';
+	import AddNodeMenuWrapper from './add/AddNodeMenuWrapper.svelte';
 	import { getInputAndOutput } from './getInputAndOutput.js';
 	import { getScreenFontSize } from './getScreenFontSize.js';
 	import { getScreenLineHeight } from './getScreenLineHeight.js';
@@ -48,7 +48,7 @@
 			<NodeItem {node} {space} {editor} />
 		{/each}
 		<PreviewConnectionWire {space} />
-		<AddNodeMenuWrapper {mouseEvent} />
+		<AddNodeMenuWrapper {space} {editor} {mouseEvent} />
 	</BaseNodeList>
 </div>
 
