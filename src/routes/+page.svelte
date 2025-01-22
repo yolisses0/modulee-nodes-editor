@@ -1,5 +1,5 @@
 <script lang="ts">
-	import NodesPage from '../dev/NodesPage.svelte';
+	import NodesPage from '../lib/node/NodesPage.svelte';
 </script>
 
 <NodesPage />

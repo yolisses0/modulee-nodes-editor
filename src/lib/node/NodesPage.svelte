@@ -9,7 +9,7 @@
 	import ZoomInButton from '$lib/zoom/ZoomInButton.svelte';
 	import ZoomOutButton from '$lib/zoom/ZoomOutButton.svelte';
 	import { Vector } from 'nodes-editor';
-	import { devEditorData } from './devEditorData.js';
+	import { devEditorData } from '../../dev/devEditorData.js';
 
 	let zoom = $state(20);
 
