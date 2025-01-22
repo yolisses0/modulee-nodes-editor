@@ -19,7 +19,7 @@
 	const { space, editor, closeModal, screenPosition }: Props = $props();
 
 	function handleTypeClick(nodeType: NodeType) {
-		const dataPosition = space.getDataPosition(screenPosition);
+		const dataPosition = space.getDataPosition(screenPosition).round();
 		const nodeData = createNodeData(nodeType, dataPosition);
 		const addNodeCommand = new AddNodeCommand({
 			id: createId(),
