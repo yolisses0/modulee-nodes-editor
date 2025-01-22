@@ -4,7 +4,7 @@
 	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeMover as BaseNodeMover, Vector, type MoveEvent } from 'nodes-editor';
+	import { Mover, Vector, type MoveEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
 
 	interface Props {
@@ -55,7 +55,7 @@
 	}
 </script>
 
-<BaseNodeMover
+<Mover
 	onMove={handleMove}
 	onEndMove={handleEndMove}
 	onStartMove={handleStartMove}
@@ -64,4 +64,4 @@
 	<div class="hover-bg select-none" style:padding-inline="0.5lh">
 		{node.type}
 	</div>
-</BaseNodeMover>
+</Mover>
