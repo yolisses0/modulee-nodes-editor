@@ -25,7 +25,6 @@
 	<RedoButton {editor} />
 	<ZoomInButton bind:zoom />
 	<ZoomOutButton bind:zoom />
-	<!-- <DevButton {editor} /> -->
 </div>
 <div class="flex min-h-screen flex-col">
 	<NodeList {editor} {space} nodes={editor.nodes} />

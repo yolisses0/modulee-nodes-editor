@@ -15,10 +15,16 @@
 
 	const { node, space, editor }: Props = $props();
 
-	function getMoveDataPosition({ position, initialPosition, initialNodePosition }: MoveNodeEvent) {
+	function getMoveDataPosition({
+		initialNodePosition,
+		mouseRelativePosition,
+		initialMouseRelativePosition,
+	}: MoveNodeEvent) {
 		const screenInitialNodePosition = space.getScreenPosition(initialNodePosition);
-		const screenPosition = position.add(screenInitialNodePosition).subtract(initialPosition);
-		return space.getDataPosition(screenPosition).round();
+		const screenNodePosition = mouseRelativePosition
+			.add(screenInitialNodePosition)
+			.subtract(initialMouseRelativePosition);
+		return space.getDataPosition(screenNodePosition).round();
 	}
 
 	function handleMove(e: MoveNodeEvent) {
@@ -28,8 +34,6 @@
 
 	function handleEndMove(e: MoveNodeEvent) {
 		const dataPosition = getMoveDataPosition(e);
-		node.position = dataPosition;
-
 		const moveNodeCommand = new MoveNodeCommand({
 			id: createId(),
 			type: 'MoveNodeCommand',
