@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getMousePosition, getNodeListContext } from 'nodes-editor';
+	import { getMouseRelativePosition, getNodeListContext } from 'nodes-editor';
 	import AddNodeMenu from './AddNodeMenu.svelte';
 
 	interface Props {
@@ -11,7 +11,7 @@
 	const menuPosition = $derived.by(() => {
 		if (!mouseEvent) return;
 		if (!nodeListContext.nodeList) return;
-		return getMousePosition(mouseEvent, nodeListContext.nodeList);
+		return getMouseRelativePosition(mouseEvent, nodeListContext.nodeList);
 	});
 </script>
 

@@ -4,7 +4,7 @@
 	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
-	import { NodeMover as BaseNodeMover, type MoveNodeEvent } from 'nodes-editor';
+	import { NodeMover as BaseNodeMover, Vector, type MoveEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
 
 	interface Props {
@@ -14,12 +14,9 @@
 	}
 
 	const { node, space, editor }: Props = $props();
+	let initialNodePosition = $state(Vector.zero());
 
-	function getMoveDataPosition({
-		initialNodePosition,
-		mouseRelativePosition,
-		initialMouseRelativePosition,
-	}: MoveNodeEvent) {
+	function getMoveDataPosition({ mouseRelativePosition, initialMouseRelativePosition }: MoveEvent) {
 		const screenInitialNodePosition = space.getScreenPosition(initialNodePosition);
 		const screenNodePosition = mouseRelativePosition
 			.add(screenInitialNodePosition)
@@ -27,12 +24,16 @@
 		return space.getDataPosition(screenNodePosition).round();
 	}
 
-	function handleMove(e: MoveNodeEvent) {
+	function handleStartMove(e: MoveEvent) {
+		initialNodePosition = node.position.clone();
+	}
+
+	function handleMove(e: MoveEvent) {
 		const dataPosition = getMoveDataPosition(e);
 		node.position = dataPosition;
 	}
 
-	function handleEndMove(e: MoveNodeEvent) {
+	function handleEndMove(e: MoveEvent) {
 		const dataPosition = getMoveDataPosition(e);
 		const moveNodeCommand = new MoveNodeCommand({
 			id: createId(),
@@ -51,15 +52,13 @@
 			details: { nodeId: node.id },
 		});
 		editor.execute(removeNodeCommand);
-
-		return '';
 	}
 </script>
 
 <BaseNodeMover
-	{node}
 	onMove={handleMove}
 	onEndMove={handleEndMove}
+	onStartMove={handleStartMove}
 	oncontextmenu={handleContextMenu}
 >
 	<div class="hover-bg select-none" style:padding-inline="0.5lh">
