@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Editor } from '$lib/editor/Editor.svelte.js';
+	import type { EditorData } from '$lib/editor/EditorData.js';
 	import RedoButton from '$lib/editor/RedoButton.svelte';
 	import UndoButton from '$lib/editor/UndoButton.svelte';
 	import NodeList from '$lib/node/NodeList.svelte';
@@ -9,12 +10,15 @@
 	import ZoomInButton from '$lib/zoom/ZoomInButton.svelte';
 	import ZoomOutButton from '$lib/zoom/ZoomOutButton.svelte';
 	import { Vector } from 'nodes-editor';
-	import { devEditorData } from '../../dev/devEditorData.js';
+
+	interface Props {
+		editorData: EditorData;
+	}
+
+	const { editorData }: Props = $props();
+	const editor = new Editor(editorData);
 
 	let zoom = $state(20);
-
-	const editor = new Editor(devEditorData);
-
 	const space = $derived(
 		new Space([new OffsetConverter(new Vector(3, 2)), new ZoomConverter(zoom)]),
 	);
