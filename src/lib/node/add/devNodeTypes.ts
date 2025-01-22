@@ -25,23 +25,23 @@ export const devNodeTypes: NodeType[] = [
 	{
 		id: 'phase',
 		name: 'Phase',
-		outputNames: [],
 		defaultExtras: {},
+		outputNames: ['phase'],
 		inputNames: ['time', 'frequency'],
 	},
 	{
 		id: 'sine_wave',
-		outputNames: [],
 		name: 'SineWave',
 		defaultExtras: {},
 		inputNames: ['phase'],
+		outputNames: ['output'],
 	},
 	{
-		outputNames: [],
 		defaultExtras: {},
 		id: 'triangle_wave',
 		name: 'TriangleWave',
 		inputNames: ['phase'],
+		outputNames: ['output'],
 	},
 	{
 		name: 'Time',
