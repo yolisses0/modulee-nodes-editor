@@ -23,6 +23,7 @@
 
 	function handleEndPreviewConnection(e: EndPreviewConnectionEvent) {
 		const { input, output } = getInputAndOutput(e);
+		if (!input) return;
 		const command = new SetInputConnectedOutput({
 			id: createId(),
 			type: 'SetInputConnectedOutput',
