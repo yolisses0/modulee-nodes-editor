@@ -6,6 +6,7 @@ export class Editor {
 	nodes: Node[] = $state([]);
 	history: Command[] = $state([]);
 	undoneHistory: Command[] = $state([]);
+	onExecute?: (command: Command) => void;
 
 	constructor(private editorData: EditorData) {
 		this.recalculate();
@@ -36,6 +37,7 @@ export class Editor {
 		command.execute(this.editorData);
 		this.undoneHistory = [];
 		this.recalculate();
+		this.onExecute?.(command);
 	}
 
 	undo() {
