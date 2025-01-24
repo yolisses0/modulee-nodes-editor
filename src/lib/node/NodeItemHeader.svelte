@@ -11,9 +11,10 @@
 		node: Node;
 		space: Space;
 		editor: Editor;
+		projectId: string;
 	}
 
-	const { node, space, editor }: Props = $props();
+	const { node, space, editor, projectId }: Props = $props();
 	let initialNodePosition = $state(Vector.zero());
 
 	function getMoveDataPosition({ mouseRelativePosition, initialMouseRelativePosition }: MoveEvent) {
@@ -36,6 +37,7 @@
 	function handleEndMove(e: MoveEvent) {
 		const dataPosition = getMoveDataPosition(e);
 		const moveNodeCommand = new MoveNodeCommand({
+			projectId,
 			id: createId(),
 			type: 'MoveNodeCommand',
 			details: { nodeId: node.id, position: dataPosition },
@@ -48,8 +50,9 @@
 		e.stopPropagation();
 
 		const removeNodeCommand = new RemoveNodeCommand({
-			type: 'RemoveNodeCommand',
+			projectId,
 			id: createId(),
+			type: 'RemoveNodeCommand',
 			details: { nodeId: node.id },
 		});
 		editor.execute(removeNodeCommand);

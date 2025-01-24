@@ -12,16 +12,18 @@
 	interface Props {
 		space: Space;
 		editor: Editor;
+		projectId: string;
 		screenPosition: Vector;
 		closeModal: () => void;
 	}
 
-	const { space, editor, closeModal, screenPosition }: Props = $props();
+	const { space, editor, projectId, closeModal, screenPosition }: Props = $props();
 
 	function handleTypeClick(nodeType: NodeType) {
 		const dataPosition = space.getDataPosition(screenPosition).round();
 		const nodeData = createNodeData(nodeType, dataPosition);
 		const addNodeCommand = new AddNodeCommand({
+			projectId,
 			id: createId(),
 			type: 'AddNodeCommand',
 			details: { node: nodeData },

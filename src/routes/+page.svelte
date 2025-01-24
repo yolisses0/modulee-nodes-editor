@@ -4,6 +4,7 @@
 	import NodesPage from '../lib/node/NodesPage.svelte';
 
 	const editor = new Editor(devEditorData);
+	const projectId = 'devProject';
 </script>
 
-<NodesPage {editor} />
+<NodesPage {editor} {projectId} />

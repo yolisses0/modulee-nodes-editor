@@ -12,9 +12,10 @@
 
 	interface Props {
 		editor: Editor;
+		projectId: string;
 	}
 
-	const { editor }: Props = $props();
+	const { editor, projectId }: Props = $props();
 
 	let zoom = $state(20);
 	const space = $derived(
@@ -29,5 +30,5 @@
 	<ZoomOutButton bind:zoom />
 </div>
 <div class="flex min-h-screen flex-col">
-	<NodeList {editor} {space} nodes={editor.nodes} />
+	<NodeList {editor} {space} {projectId} nodes={editor.nodes} />
 </div>

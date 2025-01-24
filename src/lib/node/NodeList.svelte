@@ -16,15 +16,17 @@
 		space: Space;
 		nodes: Node[];
 		editor: Editor;
+		projectId: string;
 	}
 
 	let mouseEvent = $state<MouseEvent>();
-	const { nodes, space, editor }: Props = $props();
+	const { nodes, space, editor, projectId }: Props = $props();
 
 	function handleEndPreviewConnection(e: EndPreviewConnectionEvent) {
 		const { input, output } = getInputAndOutput(e);
 		if (!input) return;
 		const command = new SetInputConnectedOutput({
+			projectId,
 			id: createId(),
 			type: 'SetInputConnectedOutput',
 			details: { inputId: input.id, outputId: output?.id },
@@ -45,10 +47,10 @@
 >
 	<BaseNodeList oncontextmenu={handleContextMenu} onEndPreview={handleEndPreviewConnection}>
 		{#each nodes as node (node.id)}
-			<NodeItem {node} {space} {editor} />
+			<NodeItem {node} {space} {editor} {projectId} />
 		{/each}
 		<PreviewConnectionWire {space} />
-		<AddNodeMenuWrapper {space} {editor} {mouseEvent} />
+		<AddNodeMenuWrapper {space} {editor} {projectId} {mouseEvent} />
 	</BaseNodeList>
 </div>
 

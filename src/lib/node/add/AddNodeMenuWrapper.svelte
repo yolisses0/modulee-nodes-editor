@@ -7,10 +7,11 @@
 	interface Props {
 		space: Space;
 		editor: Editor;
+		projectId: string;
 		mouseEvent?: MouseEvent;
 	}
 
-	let { space, editor, mouseEvent = $bindable() }: Props = $props();
+	let { space, editor, projectId, mouseEvent = $bindable() }: Props = $props();
 	const nodeListContext = getNodeListContext();
 	const menuPosition = $derived.by(() => {
 		if (!mouseEvent) return;
@@ -25,5 +26,6 @@
 
 {#if menuPosition}
 	<button onclick={closeModal} class="absolute h-full w-full" aria-label="overlay"></button>
-	<AddNodeMenu screenPosition={menuPosition} {space} {editor} {closeModal}></AddNodeMenu>
+	<AddNodeMenu screenPosition={menuPosition} {space} {editor} {projectId} {closeModal}
+	></AddNodeMenu>
 {/if}
