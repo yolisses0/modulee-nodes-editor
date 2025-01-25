@@ -34,7 +34,18 @@
 	}
 </script>
 
-<div class="rounded bg-zinc-700">
+<div class="max-h-[75vh] rounded bg-zinc-700">
 	<div class="border-b border-b-white/10 p-2">Add node</div>
-	<NodeTypeList nodeTypes={devNodeTypes} onTypeClick={handleTypeClick} />
+	<div class="scroller overflow-auto">
+		<NodeTypeList nodeTypes={devNodeTypes} onTypeClick={handleTypeClick} />
+	</div>
 </div>
+
+<style>
+	/* Scrollbar */
+	/* width */
+	.scroller::-webkit-scrollbar {
+		width: 0.25rem;
+		height: 0.25rem;
+	}
+</style>
