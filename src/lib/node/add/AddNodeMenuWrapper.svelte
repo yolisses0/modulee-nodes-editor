@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
-	import { computePosition, flip } from '@floating-ui/dom';
+	import { computePosition, flip, shift } from '@floating-ui/dom';
 	import { getMouseRelativePosition, getNodeListContext } from 'nodes-editor';
 	import AddNodeMenu from './AddNodeMenu.svelte';
 
@@ -34,7 +34,7 @@
 		menuPosition;
 		computePosition(positioner!, menu!, {
 			placement: 'right',
-			middleware: [flip()],
+			middleware: [flip(), shift()],
 		}).then(({ x, y }) => {
 			if (!menu) return;
 			Object.assign(menu!.style, { top: `${y}px`, left: `${x}px` });
