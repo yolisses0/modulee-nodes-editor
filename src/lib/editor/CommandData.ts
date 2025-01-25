@@ -5,4 +5,5 @@ export type CommandData<T = EmptyObject> = {
 	details: T;
 	type: string;
 	projectId: string;
+	createdAt: string;
 };

@@ -27,6 +27,7 @@
 			id: createId(),
 			type: 'AddNodeCommand',
 			details: { node: nodeData },
+			createdAt: new Date().toJSON(),
 		});
 		editor.execute(addNodeCommand);
 		closeModal();

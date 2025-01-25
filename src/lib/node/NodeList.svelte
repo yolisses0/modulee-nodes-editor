@@ -28,6 +28,7 @@
 		const command = new SetInputConnectedOutput({
 			projectId,
 			id: createId(),
+			createdAt: new Date().toJSON(),
 			type: 'SetInputConnectedOutput',
 			details: { inputId: input.id, outputId: output?.id },
 		});

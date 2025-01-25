@@ -40,6 +40,7 @@
 			projectId,
 			id: createId(),
 			type: 'MoveNodeCommand',
+			createdAt: new Date().toJSON(),
 			details: { nodeId: node.id, position: dataPosition },
 		});
 		editor.execute(moveNodeCommand);
@@ -54,6 +55,7 @@
 			id: createId(),
 			type: 'RemoveNodeCommand',
 			details: { nodeId: node.id },
+			createdAt: new Date().toJSON(),
 		});
 		editor.execute(removeNodeCommand);
 	}
