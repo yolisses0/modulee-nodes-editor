@@ -3,6 +3,7 @@
 	import { createId } from '$lib/data/createId.js';
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import { Space } from '$lib/space/Space.js';
+	import type { Vector } from 'nodes-editor';
 	import { createNodeData } from './createNodeData.js';
 	import { devNodeTypes } from './devNodeTypes.js';
 	import type { NodeType } from './NodeType.js';
@@ -13,9 +14,10 @@
 		editor: Editor;
 		projectId: string;
 		closeModal: () => void;
+		screenPosition: Vector;
 	}
 
-	const { space, editor, projectId, closeModal }: Props = $props();
+	const { space, editor, projectId, closeModal, screenPosition }: Props = $props();
 
 	function handleTypeClick(nodeType: NodeType) {
 		const dataPosition = space.getDataPosition(screenPosition).round();

@@ -51,6 +51,7 @@
 		style:left={menuPosition.x + 'px'}
 	></div>
 	<div bind:this={menu} class="absolute">
-		<AddNodeMenu {space} {editor} {projectId} {closeModal}></AddNodeMenu>
+		<AddNodeMenu {space} {editor} {projectId} {closeModal} screenPosition={menuPosition}
+		></AddNodeMenu>
 	</div>
 {/if}
