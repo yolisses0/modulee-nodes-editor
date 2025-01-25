@@ -45,7 +45,7 @@
 {#if menuPosition}
 	<button onclick={closeModal} class="absolute h-full w-full" aria-label="overlay"></button>
 	<div
-		class="absolute h-2 w-2 bg-blue-500"
+		class="absolute"
 		bind:this={positioner}
 		style:top={menuPosition.y + 'px'}
 		style:left={menuPosition.x + 'px'}
