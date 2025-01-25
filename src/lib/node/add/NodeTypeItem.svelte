@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { nodesName } from './nodeNames.js';
 	import type { NodeType } from './NodeType.js';
 
 	interface Props {
@@ -14,5 +15,5 @@
 </script>
 
 <button onclick={handleClick} class="common-button">
-	{nodeType.name}
+	{nodesName[nodeType.name]}
 </button>

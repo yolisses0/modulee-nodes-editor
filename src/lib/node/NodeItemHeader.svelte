@@ -6,6 +6,7 @@
 	import type { Space } from '$lib/space/Space.js';
 	import { Mover, Vector, type MoveEvent } from 'nodes-editor';
 	import type { Node } from '../data/Node.svelte.js';
+	import { nodesName } from './add/nodeNames.js';
 
 	interface Props {
 		node: Node;
@@ -68,6 +69,6 @@
 	oncontextmenu={handleContextMenu}
 >
 	<div class="hover-bg" style:padding-inline="0.5lh">
-		{node.type}
+		{nodesName[node.type]}
 	</div>
 </Mover>
