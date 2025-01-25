@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Editor } from '$lib/editor/Editor.svelte.js';
 	import type { Space } from '$lib/space/Space.js';
+	import { computePosition, flip } from '@floating-ui/dom';
 	import { getMouseRelativePosition, getNodeListContext } from 'nodes-editor';
 	import AddNodeMenu from './AddNodeMenu.svelte';
 
@@ -12,6 +13,10 @@
 	}
 
 	let { space, editor, projectId, mouseEvent = $bindable() }: Props = $props();
+
+	let menu = $state<HTMLElement>();
+	let positioner = $state<HTMLElement>();
+
 	const nodeListContext = getNodeListContext();
 	const menuPosition = $derived.by(() => {
 		if (!mouseEvent) return;
@@ -22,10 +27,30 @@
 	function closeModal() {
 		mouseEvent = undefined;
 	}
+
+	$effect(() => {
+		if (!menu) return;
+		if (!positioner) return;
+		menuPosition;
+		computePosition(positioner!, menu!, {
+			placement: 'right',
+			middleware: [flip()],
+		}).then(({ x, y }) => {
+			if (!menu) return;
+			Object.assign(menu!.style, { top: `${y}px`, left: `${x}px` });
+		});
+	});
 </script>
 
 {#if menuPosition}
 	<button onclick={closeModal} class="absolute h-full w-full" aria-label="overlay"></button>
-	<AddNodeMenu screenPosition={menuPosition} {space} {editor} {projectId} {closeModal}
-	></AddNodeMenu>
+	<div
+		class="absolute h-2 w-2 bg-blue-500"
+		bind:this={positioner}
+		style:top={menuPosition.y + 'px'}
+		style:left={menuPosition.x + 'px'}
+	></div>
+	<div bind:this={menu} class="absolute">
+		<AddNodeMenu {space} {editor} {projectId} {closeModal}></AddNodeMenu>
+	</div>
 {/if}
