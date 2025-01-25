@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { nodesName } from './nodeNames.js';
 	import type { NodeType } from './NodeType.js';
 	import NodeTypeItem from './NodeTypeItem.svelte';
 
@@ -8,8 +9,13 @@
 	}
 
 	const { nodeTypes, onTypeClick }: Props = $props();
+	const sortedNodeTypes = $derived(
+		nodeTypes.toSorted((a, b) => {
+			return nodesName[a.name].localeCompare(nodesName[b.name]);
+		}),
+	);
 </script>
 
-{#each nodeTypes as nodeType (nodeType.id)}
+{#each sortedNodeTypes as nodeType (nodeType.id)}
 	<NodeTypeItem {nodeType} {onTypeClick} />
 {/each}
