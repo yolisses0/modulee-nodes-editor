@@ -35,7 +35,7 @@
 </script>
 
 <div class="max-h-[75vh] rounded bg-zinc-700">
-	<div class="border-b border-b-white/10 p-2">Add node</div>
+	<div class="border-b border-black p-2">Add node</div>
 	<div class="scroller overflow-auto">
 		<NodeTypeList nodeTypes={devNodeTypes} onTypeClick={handleTypeClick} />
 	</div>

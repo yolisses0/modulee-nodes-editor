@@ -23,7 +23,7 @@
 	);
 </script>
 
-<div class="flex-row border-b border-b-white/10">
+<div class="flex-row border-b border-b-black">
 	<UndoButton {editor} />
 	<RedoButton {editor} />
 	<ZoomInButton bind:zoom />
